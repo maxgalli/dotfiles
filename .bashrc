@@ -49,9 +49,9 @@ if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
     fi
     # yellow hostname, blue working dir
     PS1="$PS1@\[\e[1m\]\[\e[33m\]\H${debian_chroot:+($debian_chroot)}\[\e[00m\]:\[\e[96m\]\[\e[1m\]\w\[\e[00m\]]\n\\\$ "
-    if [ -x /bin/date ]; then
-        PROMPT_COMMAND=prompt_command
-    fi
+    #if [ -x /bin/date ]; then
+    #    PROMPT_COMMAND=prompt_command
+    #fi
 else
     PS1='[\u@\H${debian_chroot:+($debian_chroot)}:\w]\n\$ '
 fi
@@ -111,3 +111,28 @@ export GREP_COLORS='mt=03;107;36:sl=:cx=:fn=91;44;01:ln=32:bn=32:se=36'
 
 # i3lock-fancy
 alias xxx='i3lock-fancy'
+
+# for gnome-control-center to work properly with i3
+alias gnome-control-center='env XDG_CURRENT_DESKTOP=GNOME gnome-control-center'
+
+# run powerline
+#powerline-daemon -q
+#POWERLINE_BASH_CONTINUATION=1
+#POWERLINE_BASH_SELECT=1
+#. /home/massimiliano/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/massimiliano/python-devel/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/massimiliano/python-devel/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/massimiliano/python-devel/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/massimiliano/python-devel/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
